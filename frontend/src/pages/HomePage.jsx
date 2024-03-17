@@ -20,28 +20,17 @@ const HomePage = () => {
 
   async function asyncGetProfileAndRepos(username = 'mchangpi') {
     setLoading(true);
-
-    // console.log('token', import.meta.env.VITE_GITHUB_API_KEY);
-
     try {
-      // 60 requests per hour, 5000 requests per hour for authenticated requests
-      // https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28
-      const userRes = await fetch(`https://api.github.com/users/${username}`, {
-        headers: {
-          authorization: `token ${import.meta.env.VITE_GITHUB_API_KEY}`,
-        },
-      });
+      const res = await fetch(
+        `http://localhost:5000/api/users/profile/${username}`,
+      );
+      const { profile, repos } = await res.json();
 
-      const profile = await userRes.json();
+      //descending, recent first
+      repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
       setUserProfile(profile);
-
-      const repoRes = await fetch(profile.repos_url);
-      const repos = await repoRes.json();
-
-      repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)); //descending, recent first
       setRepos(repos);
-
-      console.log('profile', profile);
 
       return { profile, repos };
     } catch (error) {
