@@ -7,33 +7,23 @@ import {
 import { FaXTwitter } from 'react-icons/fa6';
 import { TfiThought } from 'react-icons/tfi';
 import { FaEye } from 'react-icons/fa';
+import { formatMemberSince } from '../utils/functions';
 
-const ProfileInfo = () => {
-  const userProfile = {
-    avatar_url:
-      'https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745',
-    bio: '👨🏻‍💻👨🏻‍💻👨🏻‍💻',
-    email: 'johndoe@gmail.com',
-    followers: 100,
-    following: 200,
-    html_url: 'https://github.com/burakorkmez',
-    location: 'Somewhere, Earth',
-    name: 'John Doe',
-    public_gists: 100,
-    public_repos: 100,
-    twitter_username: 'johndoe',
-    login: 'johndoe',
-  };
+const ProfileInfo = ({ userProfile }) => {
+  const memberSince = formatMemberSince(userProfile?.created_at) || 'n/a';
+
+  // console.log('profile', userProfile);
+  // console.log('memberSince', memberSince);
 
   return (
-    <div className="flex w-full flex-col items-center gap-2 md:sticky md:top-10 lg:w-1/3">
+    <div className="flex w-full flex-col items-center gap-2 md:w-[40%]">
       <div className="bg-glass rounded-lg p-4">
         <div className="flex items-center gap-3">
           {/* User Avatar */}
           <a href={userProfile?.html_url} target="_blank" rel="noreferrer">
             <img
               src={userProfile?.avatar_url}
-              className="mb-2 h-24 w-24 rounded-md"
+              className="mb-2 h-24 w-24 rounded-md object-cover"
               alt=""
             />
           </a>
@@ -41,7 +31,7 @@ const ProfileInfo = () => {
           {/* View on Github */}
           <div className="flex flex-col items-center gap-2">
             <a
-              href={userProfile.html_url}
+              href={userProfile?.html_url}
               target="_blank"
               rel="noreferrer"
               className="bg-glass flex w-full cursor-pointer items-center gap-2 rounded-md border border-blue-400 p-2 text-xs font-medium"
@@ -83,14 +73,14 @@ const ProfileInfo = () => {
 
         {/* Member Since Date */}
         <div className="my-2">
-          <p className="text-sm font-bold text-gray-600">Member since</p>
-          <p className="">21 Sep, 2023</p>
+          <p className="text-sm font-bold text-amber-300">Member since</p>
+          <p className="">{memberSince}</p>
         </div>
 
         {/* Email Address */}
         {userProfile?.email && (
           <div className="my-2">
-            <p className="text-sm font-bold text-gray-600">Email address</p>
+            <p className="text-sm font-bold text-amber-300">Email address</p>
             <p className="">{userProfile.email}</p>
           </div>
         )}
@@ -98,7 +88,7 @@ const ProfileInfo = () => {
         {/* Full Name */}
         {userProfile?.name && (
           <div className="my-2">
-            <p className="text-sm font-bold text-gray-600">Full name</p>
+            <p className="text-sm font-bold text-amber-300">Full name</p>
             <p className="">{userProfile?.name}</p>
           </div>
         )}
@@ -133,3 +123,22 @@ const ProfileInfo = () => {
   );
 };
 export default ProfileInfo;
+
+/*
+  const userProfile = {
+    avatar_url:
+      'https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745',
+    bio: '👨🏻‍💻👨🏻‍💻👨🏻‍💻',
+    email: 'johndoe@gmail.com',
+    followers: 100,
+    following: 200,
+    html_url: 'https://github.com/burakorkmez',
+    location: 'Somewhere, Earth',
+    name: 'John Doe',
+    public_gists: 100,
+    public_repos: 100,
+    twitter_username: 'johndoe',
+    login: 'johndoe',
+  };
+
+*/
