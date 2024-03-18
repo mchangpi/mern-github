@@ -29,6 +29,20 @@ router.get(
   }
 );
 
+router.get('/check', function (req, res) {
+  if (req.isAuthenticated()) {
+    res.send({ user: req.user });
+  } else {
+    res.send({ user: null });
+  }
+});
+
+router.get('/logout', function (req, res) {
+  req.session.destroy((err) => {
+    res.json({ message: 'Logged out' });
+  });
+});
+
 /*
 router.get(
   '/github',

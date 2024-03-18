@@ -97,25 +97,25 @@ const ProfileInfo = ({ userProfile }) => {
       <div className="mx-4 flex flex-wrap gap-2">
         {/* Followers Count */}
         <div className="bg-glass flex min-w-24 flex-1 items-center gap-2 rounded-lg p-2">
-          <RiUserFollowFill className="h-5 w-5 text-blue-800" />
+          <RiUserFollowFill className="h-5 w-5 text-cyan-500" />
           <p className="text-xs">Followers: {userProfile?.followers}</p>
         </div>
 
         {/* Following count */}
         <div className="bg-glass flex min-w-24 flex-1 items-center gap-2 rounded-lg p-2">
-          <RiUserFollowLine className="h-5 w-5 text-blue-800" />
+          <RiUserFollowLine className="h-5 w-5 text-cyan-500" />
           <p className="text-xs">Following: {userProfile?.following}</p>
         </div>
 
         {/* Number of public repos */}
         <div className="bg-glass flex min-w-24 flex-1 items-center gap-2 rounded-lg p-2">
-          <RiGitRepositoryFill className="h-5 w-5 text-blue-800" />
+          <RiGitRepositoryFill className="h-5 w-5 text-cyan-500" />
           <p className="text-xs">Public repos: {userProfile?.public_repos}</p>
         </div>
 
         {/* Number of public gists */}
         <div className="bg-glass flex min-w-24 flex-1 items-center gap-2 rounded-lg p-2">
-          <RiGitRepositoryFill className="h-5 w-5 text-blue-800" />
+          <RiGitRepositoryFill className="h-5 w-5 text-cyan-500" />
           <p className="text-xs">Public gists: {userProfile?.public_gists}</p>
         </div>
       </div>

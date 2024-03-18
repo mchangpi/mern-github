@@ -8,8 +8,11 @@ import ExplorePage from './pages/ExplorePage';
 import LikesPage from './pages/LikesPage';
 
 import Sidebar from './components/Sidebar';
+import { useAuthContext } from './context/AuthContext';
 
 function App() {
+  const { authUser, setAuthUser } = useAuthContext();
+  console.log('auth user', authUser);
   return (
     <div className="flex backdrop-opacity-95">
       <Sidebar />
