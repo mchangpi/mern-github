@@ -1,17 +1,30 @@
 import { MdLogout } from 'react-icons/md';
-// TODO Implement Logout functionality
+import { useAuthContext } from '../context/AuthContext';
+import { toast } from 'react-hot-toast';
 
 const Logout = () => {
+  const { authUser, setAuthUser } = useAuthContext();
+  async function handleLogout() {
+    try {
+      const res = await fetch('/api/auth/logout', { credentials: 'include' });
+      const data = await res.json();
+      setAuthUser(null);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  }
+
   return (
     <>
       <img
-        src={
-          'https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745'
-        }
+        src={authUser?.avatarUrl}
         className="h-10 w-10 rounded-full border border-gray-800"
       />
 
-      <div className="bg-glass mt-auto flex cursor-pointer items-center rounded-lg border border-gray-300 p-2">
+      <div
+        className="bg-glass mt-auto flex cursor-pointer items-center rounded-lg border border-gray-300 p-2"
+        onClick={handleLogout}
+      >
         <MdLogout size={22} />
       </div>
     </>
