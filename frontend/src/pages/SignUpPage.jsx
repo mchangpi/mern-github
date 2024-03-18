@@ -14,7 +14,7 @@ const SignUpPage = () => {
           <button
             type="button"
             className="flex w-full items-center justify-center
-						gap-2 rounded-lg bg-[#24292F] p-2 text-center font-medium text-white hover:bg-[#24292F]/90 
+						gap-2 rounded-lg bg-blue-500 p-2 text-center font-medium text-white hover:bg-blue-400 
 						focus:ring-4 focus:ring-[#24292F]/50"
             onClick={handleLoginWithGithub}
           >

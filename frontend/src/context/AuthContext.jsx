@@ -10,16 +10,19 @@ export const useAuthContext = () => {
 
 export const AuthContextProvider = ({ children }) => {
   const [authUser, setAuthUser] = useState(null);
-  // const [loading, setLoading] = useState(true);
+  const [isCheckUser, setIsCheckUser] = useState(true);
 
   useEffect(() => {
     const checkUserLoggedIn = async () => {
+      setIsCheckUser(true);
       try {
         const res = await fetch('/api/auth/check', { credentials: 'include' });
         const data = await res.json();
         setAuthUser(data.user);
       } catch (error) {
         toast.error(error.message);
+      } finally {
+        setIsCheckUser(false);
       }
     };
 
@@ -27,7 +30,7 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ authUser, setAuthUser }}>
+    <AuthContext.Provider value={{ authUser, setAuthUser, isCheckUser }}>
       {children}
     </AuthContext.Provider>
   );

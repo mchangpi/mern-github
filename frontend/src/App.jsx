@@ -11,8 +11,10 @@ import Sidebar from './components/Sidebar';
 import { useAuthContext } from './context/AuthContext';
 
 function App() {
-  const { authUser } = useAuthContext();
+  const { authUser, isCheckUser } = useAuthContext();
   console.log('auth user', authUser);
+
+  if (isCheckUser) return null;
 
   return (
     <div className="flex backdrop-opacity-95">
