@@ -76,7 +76,7 @@ export const postLikeProfile = async (req, res) => {
     authUser.likedProfiles.push({
       username: userToLike.login,
       avatarUrl: userToLike.avatar_url,
-      likedDate: Date.now().toLocaleString(),
+      likedDate: Date.now(),
     });
     await authUser.save();
 
