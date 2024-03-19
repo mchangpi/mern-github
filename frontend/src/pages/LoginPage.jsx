@@ -20,7 +20,7 @@ const LoginPage = () => {
             <FaGithub className="h-5 w-5" />
             Login with Github
           </button>
-          <p className="text-sm font-light text-gray-500">
+          <p className="text-sm font-light text-gray-200">
             {"Don't"} have an account?{' '}
             <Link
               to="/signup"

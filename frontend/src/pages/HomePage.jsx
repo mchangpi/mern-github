@@ -21,10 +21,7 @@ const HomePage = () => {
   async function asyncGetProfileAndRepos(username = 'mchangpi') {
     setLoading(true);
     try {
-      // const res = await fetch(`/api/users/profile/${username}`);
-      const res = await fetch(
-        `http://localhost:5000/api/users/profile/${username}`,
-      );
+      const res = await fetch(`/api/users/profile/${username}`);
       const { profile, repos } = await res.json();
 
       //descending, recent first
@@ -33,6 +30,7 @@ const HomePage = () => {
       setUserProfile(profile);
       setRepos(repos);
 
+      // console.log('onSearch profile', profile);
       return { profile, repos };
     } catch (error) {
       toast.error(error.message);

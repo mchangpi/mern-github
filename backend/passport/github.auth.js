@@ -26,7 +26,7 @@ passport.use(
       callbackURL: '/api/auth/github/callback',
     },
     async function (accessToken, refreshToken, profile, done) {
-      //console.log('profile', profile);
+      console.log('github strategy profile', profile);
       const user = await User.findOne({ username: profile.username });
       if (!user) {
         // signup
@@ -42,7 +42,7 @@ passport.use(
         done(null, newUser);
       } else {
         // signin
-        console.log(user.username + 'login');
+        console.log(user.username + ' login');
         done(null, user);
       }
     }
