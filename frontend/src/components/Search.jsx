@@ -22,7 +22,7 @@ const Search = ({ onSearch }) => {
         <input
           type="search"
           id="default-search"
-          className="bg-glass block w-full rounded-lg bg-transparent p-4 ps-10 text-sm focus:border-blue-500 focus:bg-transparent focus:ring-blue-500 "
+          className="bg-glass block w-full rounded-lg bg-transparent p-4 ps-10 text-sm focus:border focus:border-blue-100 focus:bg-transparent"
           placeholder="mchangpi"
           required
           value={username}
