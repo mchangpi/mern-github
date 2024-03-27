@@ -13,7 +13,11 @@ import authRoutes from './routes/auth.route.js';
 
 import connectMongoDB from './db/connectMongoDB.js';
 
+import job from "./cron.js";
+
 dotenv.config();
+
+job.start();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
